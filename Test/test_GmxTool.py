@@ -1,6 +1,5 @@
 from unittest import TestCase
-
-import GmxTool
+from MakeDroplet import GmxTool
 import numpy as np
 
 

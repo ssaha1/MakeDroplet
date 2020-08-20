@@ -5,6 +5,17 @@ import numpy as np
 
 class RunDroplet:
     def findwaterinsphere(self, com, waterdf, layer):
+        '''
+        Find coordinates of water molecule within a specific radius
+        :param com: Center of mass of the protein
+        :type com: numpy array
+        :param waterdf: Dataframe containing the coordination of water molecules
+        :type waterdf: Pandas Dataframe
+        :param layer: Thickness of the water layer surrounding the protein
+        :type layer: float
+        :return: Coordinates of water molecules within the layer
+        :rtype: numpy array
+        '''
         watershell = []  # np.empty((1, 3))
         xyz = GmxIO.getxyz(waterdf)
         xyzel = GmxIO.getxyzel(waterdf)
@@ -41,9 +52,9 @@ class RunDroplet:
     def writepdb(self, protein, watershell, outfile):
         '''
         :param protein: DataFrame containing structure and coordination data of the protein
-        :param watershell: DataFrame containg structure and coordination data of water sorrunding the protein
+        :param watershell: Thickness of the water layer surrounding the protein
         :param outfile: Name of the output file where protein and water data in PDB format is written
-        :type outfile:
+        :type outfile: PDB
         :return: None
         :rtype:
         '''
@@ -108,6 +119,9 @@ class RunDroplet:
 
 
 if __name__ == '__main__':
+    '''
+    
+    '''
     droplet = RunDroplet()
     from argparse import ArgumentParser
 
@@ -115,19 +129,19 @@ if __name__ == '__main__':
     parser = ArgumentParser()
     subparsers = parser.add_subparsers()
     parser_XYZ = subparsers.add_parser("XYZ",
-                                       help="Make an XYZ structure of protein sorrounded \
+                                       help="Make an XYZ structure of protein surrounded \
                                        by a water shell of given thickness")
     parser_XYZ.add_argument('-i', dest='infile', help='input data file', type=str)
     parser_XYZ.add_argument('-o', dest='dout', help='Output .xyz file', type=str)
-    parser_XYZ.add_argument('-s', dest='shell', help='Output .xyz file', type=float)
+    parser_XYZ.add_argument('-s', dest='shell', help='Thickness of the water layer surrounding the protein', type=float)
     parser_XYZ.set_defaults(func=droplet.makexyz)
 
     parser_PDB = subparsers.add_parser("PDB",
                                        help="Make an PDB file with structure of protein \
-                                       sorrounded by a water shell of given thickness")
+                                       surrounded by a water shell of given thickness")
     parser_PDB.add_argument('-i', dest='infile', help='input data file', type=str)
-    parser_PDB.add_argument('-o', dest='dout', help='Output .xyz file', type=str)
-    parser_PDB.add_argument('-s', dest='shell', help='Output .xyz file', type=float)
+    parser_PDB.add_argument('-o', dest='dout', help='Output .pdb file', type=str)
+    parser_PDB.add_argument('-s', dest='shell', help='Thickness of the water layer surrounding the protein', type=float)
     parser_PDB.set_defaults(func=droplet.makepdb)
     args = parser.parse_args()
     print(args)
