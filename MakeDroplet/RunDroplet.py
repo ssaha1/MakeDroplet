@@ -1,5 +1,6 @@
-import GmxIO
-import GmxTool
+#!/usr/bin/env python
+from  MakeDroplet import GmxIO
+from MakeDroplet import GmxTool
 import numpy as np
 
 

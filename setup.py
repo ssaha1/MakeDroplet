@@ -3,7 +3,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setup(
     name='MakeDroplet',
-    version='0.1',
+    version='0.05',
     url='',
     license='',
     author='Saumitra Saha',
@@ -13,8 +13,9 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    install_requires=['numpy', 'pandas', 'argparse'],
+    install_requires=['numpy', 'pandas'],
+    scripts=['MakeDroplet/RunDroplet.py'],
     python_requires='>=3.5',
     author_email='ssaumitra@gmail.com',
-    description='Create a droplet with embeded protein sourrounded by water molecule from bulk MD simulation output'
+    description='Create a droplet with embeded protein surrounded by water molecule from bulk MD simulation output'
 )
