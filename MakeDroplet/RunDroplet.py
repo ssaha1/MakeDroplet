@@ -120,12 +120,13 @@ class RunDroplet:
 
 if __name__ == '__main__':
     '''
-    
+    Create droplet from bulk structure.
+    Initialize parser. The default help has poor labeling. See http://bugs.python.org/issue9694 
     '''
     droplet = RunDroplet()
     from argparse import ArgumentParser
 
-    # Initialize parser. The default help has poor labeling. See http://bugs.python.org/issue9694
+    #
     parser = ArgumentParser()
     subparsers = parser.add_subparsers()
     parser_XYZ = subparsers.add_parser("XYZ",
