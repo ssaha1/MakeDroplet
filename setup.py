@@ -3,7 +3,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 setup(
     name='MakeDroplet',
-    version='0.06',
+    version='0.07',
     url='',
     license='',
     author='Saumitra Saha',

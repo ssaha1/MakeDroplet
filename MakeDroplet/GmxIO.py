@@ -49,6 +49,7 @@ def waterpdb(df):
 
 
 def getxyzel(df):
+    df = df[df.atname !='MW']
     xyz = np.asmatrix(df[['elname', 'x', 'y', 'z']].values)
     return xyz
 
