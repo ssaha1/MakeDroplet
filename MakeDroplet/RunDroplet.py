@@ -1,7 +1,8 @@
 #!/usr/bin/env python
-from  MakeDroplet import GmxIO
+from MakeDroplet import GmxIO
 from MakeDroplet import GmxTool
 import numpy as np
+import pandas as pd
 
 
 class RunDroplet:
@@ -39,6 +40,7 @@ class RunDroplet:
 
     # noinspection PyShadowingNames
     def getwaterspherepanda(self, df, com, layer):
+        pd.options.mode.chained_assignment = None  # default='warn'
         # import multiprocessing
         print('getting water inside the sphere')
         # df['distFromCom'] = df.apply(lambda row: droplet.distancefromCom([row['x'], row['y'], row['z']], com),
