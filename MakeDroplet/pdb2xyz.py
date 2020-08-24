@@ -21,8 +21,8 @@ if __name__ == '__main__':
     from argparse import ArgumentParser
 
     #
-    parser = ArgumentParser()
-    parser.add_argument('-i', dest='infile', help='input data file', type=str)
+    parser = ArgumentParser(description='Convert a .pdb file to .xyz')
+    parser.add_argument('-i', dest='infile', help='input .pdb file', type=str)
     parser.add_argument('-o', dest='dout', help='Output .xyz file', type=str)
     parser.set_defaults(func=pdb2xyz)
 

@@ -9,7 +9,7 @@ It reads a .pdb file from GROMACS MD simulation output, define the radius of gyr
 ## Installation
 `pip install -i https://test.pypi.org/simple/ MakeDroplet==0.6`
 
-## Usage
+## Usage 1
 ```
 usage: RunDroplet.py [-h] {XYZ,PDB} ...
 
@@ -41,4 +41,14 @@ optional arguments:
   -o DOUT     Output .pdb file
   -s SHELL    Thickness of the water layer surrounding the protein
 ```
-  
+## Usage 2
+```
+usage: pdb2xyz.py [-h] [-i INFILE] [-o DOUT]
+
+Convert a .pdb file to .xyz
+
+optional arguments:
+  -h, --help  show this help message and exit
+  -i INFILE   input .pdb file
+  -o DOUT     Output .xyz file
+```  
