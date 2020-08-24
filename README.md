@@ -7,7 +7,7 @@ It reads a .pdb file from GROMACS MD simulation output, define the radius of gyr
  * [pandas](https://pandas.pydata.org)
  
 ## Installation
-`pip install -i https://test.pypi.org/simple/ MakeDroplet==0.5`
+`pip install -i https://test.pypi.org/simple/ MakeDroplet==0.6`
 
 ## Usage
 ```
