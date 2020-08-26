@@ -23,7 +23,7 @@ def readpdbpanda(filename):
         dtype = dict(ATOM=str, index=int, atname=str, residue=str, count=int, x=float, y=float, z=float,
                      occ=float, temp=float, elname=str)
 
-        col = [(0, 4), (5, 12), (12, 17), (17, 20), (22, 27), (28, 38), (39, 46), (47, 54), (55, 60), (61, 66),
+        col = [(0, 4), (7, 12), (12, 17), (17, 20), (22, 27), (28, 38), (39, 46), (47, 54), (55, 60), (61, 66),
                (75, 78)]
         df = pd.read_fwf(filename, header=4, skipfooter=2, colspecs=col, dtypes=dtype, names=names)  # ,names=names)
         return df

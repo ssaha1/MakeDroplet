@@ -1,5 +1,7 @@
 **MakeDroplet** is a Python package for converting a protein in bulk water structure into a protein in water droplet structure. 
 It reads a .pdb file from GROMACS MD simulation output, define the radius of gyration of the protein and cut out a water layer sorrounding it. It outputs either .pdb or .xyz file with the transformed structure for further simulation, analysis or visualization.
+
+![](./pics/boxtodroplet.png)
  
 ## Requirements
  * **Python 3**
