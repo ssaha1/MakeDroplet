@@ -74,67 +74,13 @@ class RunDroplet:
                  "REMARK    THIS IS A SIMULATION BOX\n"\
                  "CRYST1  111.219  111.219  111.219  90.00  90.00  90.00 P 1           1\n"\
                  "MODEL        1\n"
-        footer = "\nTER\nENDMDL"
-        #
-        #
-        #
-        # dtypec = dict(ATOM=str, index=int, atname=str, residue=str, count=int, x=float, y=float, z=float,
-        #              occ=float, temp=float, elname=str)
-        #
-        # FLOAT_COLUMNS=('x','y','z','occ','temp')
-        # INT_COLUMNS=('index')
-        # def left_justified2(df,f):
-        #     formatters = {}
-        #
-        #     # Pass a custom pattern to format(), based on
-        #     # type of data
-        #     for li in list(df.columns):
-        #         if li in FLOAT_COLUMNS:
-        #             form = "{{!s:<10}}".format()
-        #         elif li in INT_COLUMNS:
-        #             form = "{{!s:<8}}".format()
-        #         else:
-        #             max = df[li].str.len().max()
-        #             form = "{{:<{}s}}".format(max)
-        #         formatters[li] = functools.partial(str.format, form)
-        #     return df.to_string(f,formatters=formatters, index=False,header=False)
-        #
-        # protein.iloc[:, 0] = (lambda s: s.str.ljust(s.str.len().max()))(protein.iloc[:, 0])
-        # watershell.iloc[:, 0] = (lambda s: s.str.ljust(s.str.len().max()))(watershell.iloc[:, 0])
-        # protein = protein.stack().str.lstrip().unstack()
-        # watershell = watershell.stack().str.lstrip().unstack()
-        # # protein.style.set_properties(**{'text-align': 'right'})
-        # # protein['ATOM'] = protein['ATOM'].str.lstrip()
-        # print(protein['ATOM'].dtype)
-        # # watershell['ATOM'] = watershell['ATOM'].str.lstrip()
-        # formatters = {}
-        # # for li in list(protein.columns):
-        # #     max = protein[li].str.len().max()
-        # #     form = "{{:<{}s}}".format(max)
-        # #     formatters[li] = functools.partial(str.format, form)
-        # max = protein['ATOM'].str.len().max()
-        # form = "{{:<{}s}}".format(max-1)
-        # formatters['ATOM'] = functools.partial(str.format, form)
-
-        # sp=protein.values.tolist()
-        # wp=watershell.values.tolist()
+        footer = "TER\nENDMDL"
+        protein_mat=np.asmatrix(protein.values)
+        water_mat=np.asmatrix(watershell.values)
         with open(outfile, 'a') as f:
             f.write(header,)
-            # left_justified2(protein,f)
-            # dtypec = dict(ATOM=str, index=int, atname=str, residue=str, count=int, x=float, y=float, z=float,
-            #              occ=float, temp=float, elname=str)
-            protein.to_string(f, index=False, header=False, col_space=[4, 4, 5, 5, 5, 8, 8, 8, 6, 6, 2])
-            # np.savetxt(f,protein.values,fmt=['%s', '%4d', '%5s', '%5s', '%5d', '%8.2f', '%8.2f', '%8.2f', '%6.2f', '%6.2f', '%2d'])
-            # f.write(proteintxt,)
-            # towrite='\n'.join(sp)
-            # f.write(towrite)
-            f.write('\n')
-            # towritew='\n'.join(wp)
-            # f.write(wp)
-            # left_justified2(watershell,f)
-            watershell.to_string(f,header=False,  index=False, col_space=[4, 4, 5, 5, 5, 8, 8, 8, 6, 6, 2])
-            # np.savetxt(f,watershell.values,fmt=['%4s', '%4d', '%5s', '%5s', '%5d', '%8.2f', '%8.2f', '%8.2f', '%6.2f', '%6.2f', '%2d'])
-            # f.write(watertxt,)
+            np.savetxt(f,protein_mat,fmt='%-6s%5d %4s %3s  %4d    %8.3f%8.3f%8.3f%6.2f%6.2f  %2s')
+            np.savetxt(f,water_mat,fmt='%-6s%5d %4s %3s  %4d    %8.3f%8.3f%8.3f%6.2f%6.2f  %2s')
             f.write(footer,)
             f.close()
 
